@@ -1,0 +1,148 @@
+---Analysis 1 Which complaint types take the longest to close?
+with CTE_data as(
+select category, extract(day from age(closed_date,created_date)) as closing_days
+from nyc_311_2018
+where status='Closed'
+union all
+select category, extract(day from age(closed_date,created_date)) as closing_days
+from nyc_311_2019
+where status='Closed'
+union all
+select category, extract(day from age(closed_date,created_date)) as closing_days
+from nyc_311_2020
+where status='Closed'                         
+)
+    
+
+
+select category, round(avg(closing_days),0) as avg_closing_days
+from CTE_data
+where closing_days is not null
+group by category
+order by avg_closing_days desc
+limit 5;
+
+
+---Analysis 2 Are certain agencies consistently slower in closing tickets?
+with CTE_agency as 
+(select responsibleagency, extract (day from age(closed_date,created_date)) as closing_days
+from nyc_311_2018
+where status='Closed' and closed_date is not null
+union all
+select responsibleagency, extract (day from age(closed_date,created_date)) as closing_days
+from nyc_311_2019
+where status='Closed'and closed_date is not null
+union all
+select responsibleagency, extract (day from age(closed_date,created_date)) as closing_days
+from nyc_311_2020
+where status='Closed' and closed_date is not null)
+
+select responsibleagency, round(avg(closing_days),0) as avg_closing_days
+from CTE_agency
+group by responsibleagency
+order by avg_closing_days desc
+limit 5;
+
+
+---Analysis 3 Does location type effect the avg closing time?
+with cte_locationtype as(
+    select locationtype, extract(day from age(closed_date,created_date)) as closing_days
+from nyc_311_2018
+where closed_date is not null and status='Closed' and locationtype is not null
+union all
+select locationtype, extract(day from age(closed_date,created_date)) as closing_days
+from nyc_311_2019
+where closed_date is not null and status='Closed' and locationtype is not null
+union all
+select locationtype, extract(day from age(closed_date,created_date)) as closing_days
+from nyc_311_2020
+where closed_date is not null and status='Closed' and locationtype is not null)
+
+select locationtype, round(avg(closing_days),0)as avg_closing_days
+from cte_locationtype
+group by locationtype
+order by avg_closing_days desc
+limit 5;
+
+
+
+ ---Analysis 4 Does the time of day a complaint is submitted impact how fast it is resolved?
+with cte_hour as
+(select 
+ case
+ when extract(hour from created_date) between 6 and 11 then 'Morning'
+ when extract(hour from created_date) between 12 and 17 then 'Afternoon'
+ when extract(hour from created_date) between 18 and 23 then 'Evening'
+ when extract(hour from created_date)  between 0 and 5 then 'Night'
+ end as time_of_day,
+ extract(day from age(closed_date,created_date)) as closing_day
+ from nyc_311_2018
+ where closed_date is not null and status='Closed'
+
+ union all
+ 
+ select 
+ case
+ when extract(hour from created_date) between 6 and 11 then 'Morning'
+ when extract(hour from created_date) between 12 and 17 then 'Afternoon'
+ when extract(hour from created_date) between 18 and 23 then 'Evening'
+ when extract(hour from created_date)  between 0 and 5 then 'Night'
+ end as time_of_day,
+ extract(day from age(closed_date,created_date)) as closing_day
+ from nyc_311_2019
+ where closed_date is not null and status='Closed'
+ 
+ union all
+ 
+ select 
+ case
+ when extract(hour from created_date) between 6 and 11 then 'Morning'
+ when extract(hour from created_date) between 12 and 17 then 'Afternoon'
+ when extract(hour from created_date) between 18 and 23 then 'Evening'
+ when extract(hour from created_date)  between 0 and 5 then 'Night'
+ end as time_of_day,
+ extract(day from age(closed_date,created_date)) as closing_day
+ from nyc_311_2020
+ where closed_date is not null and status='Closed')
+ 
+ select time_of_day, round(avg(closing_day),0) as avg_closing_day
+ from cte_hour
+ group by time_of_day
+ order by 
+ case
+ when time_of_day ='Morning' then 1
+ when time_of_day='Afternoon'then 2
+ when time_of_day='Evening' then 3
+ when time_of_day ='Night'then 4
+ end;
+
+
+
+ ---Analysis 5 Does closing time vary based on complaint submission method? (Phone, web, mobile app?)
+
+with cte_source as
+(select source,
+extract(day from age(closed_date,created_date)) as closing_days
+from nyc_311_2018
+where closed_date is not null and status='Closed'
+
+union all
+
+select source,
+extract(day from age(closed_date,created_date)) as closing_days
+from nyc_311_2019
+where closed_date is not null and status='Closed'
+
+union all
+
+select source,
+extract(day from age(closed_date,created_date)) as closing_days
+from nyc_311_2020
+where closed_date is not null and status='Closed')
+
+select source, round(avg(closing_days),0) as avg_closing_days
+from cte_source
+group by source
+order by avg_closing_days desc;
+ 
+ 
