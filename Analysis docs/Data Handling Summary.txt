@@ -1,0 +1,10 @@
+Data Handling Summary 	
+Analysis 1: Verified that the closing days field contained no null values, filtered the data to include only records with a closed status, and utilized CTEs with UNION ALL to identify the complaint type with the highest average closing time.	
+	
+Analysis 2: Verified that the closing days field contained no null values, filtered the dataset to include only records with a closed status, and utilized CTEs with UNION ALL to determine the agencies with the highest average closing times.	
+	
+Analysis 3: Verified that the closing days field contained no null values, filtered the dataset to include only records with a closed status, and utilized CTEs with UNION ALL to determine the location types with the longest average closing times.	
+	
+Analysis 4: Verified that the closing days field contained no null values, filtered the dataset to include only records with a closed status, and used CTEs with UNION ALL to analyze how the time of day a complaint was submitted impacts the average closing time.	
+	
+Analysis 5: Verified that the closing days field contained no null values, filtered the dataset to include only records with a closed status, and used CTEs with UNION ALL to analyze how the complaint submission method impacts the average closing time.	

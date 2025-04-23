@@ -1,0 +1,12 @@
+Hypothesis									
+If certain complaint types, agencies, location types, submission methods, or times of day are associated with longer resolution times, then targeted improvements in those specific areas are needed to enhance overall complaint resolution speed.									
+									
+Data reflects complaint resolution times from 2018–2020.									
+									
+Analysis 1	Which complaint types take the longest to resolve?								
+Analysis 2	Are certain agencies consistently slower in closing tickets?								
+Analysis 3	Does location type effect the avg closing time?								
+Analysis 4	Does the time of day a complaint is submitted impact how fast it is resolved?								
+Analysis 5	Does closing time vary based on complaint submission method? (Phone, web, mobile app?)								
+									
+									

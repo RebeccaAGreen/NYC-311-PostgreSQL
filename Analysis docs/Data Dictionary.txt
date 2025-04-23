@@ -1,0 +1,24 @@
+**Source:** [NYC Open Data - 311 Service Requests](https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/about_data)
+
+| Column Name           | Data Type               | Description                                                                 |
+|-----------------------|-------------------------|-----------------------------------------------------------------------------|
+| Request_id            | Integer                 | Unique identifier for each request made                                     |
+| Created Date          | Timestamp with time zone| Date the request was created                                                |
+| Closed Date           | Timestamp with time zone| Date the request is closed                                                  |
+| Status                | Text                    | The status of the request                                                   |
+| Community Board ID    | Text                    | Local representative body — 59 total in NYC                                 |
+| Address               | Text                    | The full address                                                            |
+| Cross Street          | Text                    | Cross street based on geo validated incident location                       |
+| Landmark              | Text                    | Name of landmark if incident location is a known landmark                   |
+| Location Type         | Text                    | Type of location used in the address information                            |
+| Facility Type         | Text                    | Type of city facility related to the request (if applicable)                |
+| Address Type          | Text                    | Type of address information available for the incident location             |
+| Vehicle Type          | Text                    | TLC-related vehicle type if applicable                                      |
+| Agency Code           | Text                    | Acronym of the City Government Agency responding to the request             |
+| Responsible Agency    | Text                    | Full name of the responding City Government Agency                          |
+| Request Type          | Text                    | Type of request made                                                        |
+| Category              | Text                    | Category associated with the request type                                   |
+| Request Details       | Text                    | Additional details about the request                                        |
+| Source                | Text                    | Source of how the request was submitted (e.g., phone, app, web)             |
+| Latitude              | Numeric                 | Geo-based latitude in decimal degrees                                       |
+| Longitude             | Numeric                 | Geo-based longitude in decimal degrees                                      |
