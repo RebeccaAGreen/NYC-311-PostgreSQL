@@ -5,9 +5,17 @@ A data analysis project using SQL and Excel to explore patterns in NYC 311 compl
 ---
 
 ## 🔍 Project Objectives
-- Identify which complaint types take the longest to resolve
-- Analyze agency response performance
-- Explore how submission method impacts closing time
+
+This project analyzes NYC 311 service request data from **2018 to 2020** to evaluate resolution patterns and uncover opportunities for process improvement.
+
+---
+
+### 🔍 Research Questions
+- Which complaint types take the longest to resolve?
+- Are certain agencies consistently slower in closing tickets?
+- Does location type affect the average closing time?
+- Does the time of day a complaint is submitted impact how fast it is resolved?
+- Does closing time vary based on complaint submission method (e.g., phone, web, or mobile app)?
 
 ---
 
