@@ -23,12 +23,11 @@ A data analysis project using SQL and Excel to explore patterns in NYC 311 compl
 
 | Folder              | Contents                                                                  |
 |---------------------|-----------------------------------------------------------------------    |
-| `Analysis docs`     | Data dictionary, hypotheses, cleaning summary                             |
+|`Raw sample data`  | Sample dataset (smaller version for demo/testing since full set is large)   |
+|`Analysis docs`     | Data dictionary, hypotheses, cleaning summary                              |
+| `sql`              | SQL scripts used in the analysis                                           |
+| `excel`            | Excel workbook with data exploration and visualizations                    |
 | `Presentation`      | Final summary slides (includes visualizations made in Excel)              |
-| `sql/`              | SQL scripts used in the analysis                                          |
-| `excel/`            | Excel workbook with data exploration and visualizations                   |
-| `Raw sample data/`  | Sample dataset (smaller version for demo/testing since full set is large) |
-
 ---
 
 ## 📂 Data Access
