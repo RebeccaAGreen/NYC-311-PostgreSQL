@@ -12,7 +12,6 @@ select category, extract(day from age(closed_date,created_date)) as closing_days
 from nyc_311_2020
 where status='Closed'                         
 )
-    
 
 
 select category, round(avg(closing_days),0) as avg_closing_days
@@ -22,17 +21,15 @@ group by category
 order by avg_closing_days desc
 limit 5;
 
-----Results:
--- +--------------------------------------------+-------------------+
--- | Category                                   | Avg Closing Days  |
--- +--------------------------------------------+-------------------+
--- | Sign Defect - Garage                       | 30                |
--- | Food Preparation Location                  | 30                |
--- | Food Contains Foreign Object               | 29                |
--- | Industrial Laundry Delivery License App.   | 28                |
--- | HOUSING QUALITY STANDARDS                  | 26                |
-
-
+---Results:
++--------------------------------------------+-------------------+
+| Category                                   | Avg Closing Days  |
+-- +--------------------------------------------+-----------------
+| Sign Defect - Garage                       | 30                |
+| Food Preparation Location                  | 30                |
+| Food Contains Foreign Object               | 29                |
+| Industrial Laundry Delivery License App.   | 28                |
+| HOUSING QUALITY STANDARDS                  | 26                |
 
 
 
@@ -51,11 +48,24 @@ select responsibleagency, extract (day from age(closed_date,created_date)) as cl
 from nyc_311_2020
 where status='Closed' and closed_date is not null)
 
+
 select responsibleagency, round(avg(closing_days),0) as avg_closing_days
 from CTE_agency
 group by responsibleagency
 order by avg_closing_days desc
 limit 5;
+
+---Results:
+----------------------------------------------------------+-------------------+
+| Responsible Agency                                         | Avg Closing Days  |
++------------------------------------------------------------+-------------------+
+| School - PS 310 Marble Hill                                | 30                |
+| School - PS 39 Francis J Murphy Jr                         | 30                |
+| School - Mott Haven Village Preparatory High School        | 30                |
+| School - PS 107 John W Kimball                             | 30                |
+| School - JHS 54 Booker T Washington                        | 29                |
+
+
 
 
 ---Analysis 3 Does location type effect the avg closing time?
@@ -72,11 +82,23 @@ select locationtype, extract(day from age(closed_date,created_date)) as closing_
 from nyc_311_2020
 where closed_date is not null and status='Closed' and locationtype is not null)
 
+
 select locationtype, round(avg(closing_days),0)as avg_closing_days
 from cte_locationtype
 group by locationtype
 order by avg_closing_days desc
 limit 5;
+
+---Results:
++-----------------------------------------------+-------------------+
+| Location Type                                 | Avg Closing Days  |
++-----------------------------------------------+-------------------+
+| Permanent Food Stand                          | 25                |
+| Correctional Facility - State                 | 25                |
+| Cafeteria - Private                           | 24                |
+| Other (explain in Complaint Details)          | 24                |
+| Wooded Area                                   | 20                |
+
 
 
 
@@ -118,7 +140,8 @@ with cte_hour as
  extract(day from age(closed_date,created_date)) as closing_day
  from nyc_311_2020
  where closed_date is not null and status='Closed')
- 
+
+
  select time_of_day, round(avg(closing_day),0) as avg_closing_day
  from cte_hour
  group by time_of_day
@@ -129,6 +152,16 @@ with cte_hour as
  when time_of_day='Evening' then 3
  when time_of_day ='Night'then 4
  end;
+
+---Results:
++-------------+-------------------+
+| Time of Day | Avg Closing Days  |
+-- +-------------+-------------------+
+| Afternoon   | 5                 |
+| Morning     | 4                 |
+| Evening     | 3                 |
+| Night       | 2                 |
+
 
 
 
@@ -154,9 +187,19 @@ extract(day from age(closed_date,created_date)) as closing_days
 from nyc_311_2020
 where closed_date is not null and status='Closed')
 
+
 select source, round(avg(closing_days),0) as avg_closing_days
 from cte_source
 group by source
 order by avg_closing_days desc;
- 
+
+---Results:
++---------+--------------------+
+| Source  | Avg Closing Days   |
++---------+--------------------+
+| OTHER   | 8                  |
+| UNKNOWN | 5                  |
+| PHONE   | 4                  |
+| ONLINE  | 3                  |
+| MOBILE  | 2                  |
  
