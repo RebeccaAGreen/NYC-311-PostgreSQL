@@ -22,6 +22,20 @@ group by category
 order by avg_closing_days desc
 limit 5;
 
+----Results:
+-- +--------------------------------------------+-------------------+
+-- | Category                                   | Avg Closing Days  |
+-- +--------------------------------------------+-------------------+
+-- | Sign Defect - Garage                       | 30                |
+-- | Food Preparation Location                  | 30                |
+-- | Food Contains Foreign Object               | 29                |
+-- | Industrial Laundry Delivery License App.   | 28                |
+-- | HOUSING QUALITY STANDARDS                  | 26                |
+
+
+
+
+
 
 ---Analysis 2 Are certain agencies consistently slower in closing tickets?
 with CTE_agency as 
