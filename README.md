@@ -29,13 +29,15 @@ This project analyzes NYC 311 service request data from **2018 to 2020** to eval
 
 ## 📁 Project Structure
 
-| Folder              | Contents                                                                  |
-|---------------------|-----------------------------------------------------------------------    |
-|`Raw sample data`  | Sample dataset (smaller version for demo/testing since full set is large)   |
-|`Analysis docs`     | Data dictionary, hypotheses, cleaning summary                              |
-| `sql`              | SQL scripts used in the analysis                                           |
-| `excel`            | Excel workbook with data exploration and visualizations                    |
-| `Presentation`      | Final summary slides (includes visualizations made in Excel)              |
+| Folder                     | Contents                                                              |
+|----------------------------|-----------------------------------------------------------------------|
+| Raw sample data            | Sample dataset (smaller version for testing since full set is large)  |
+| Analysis docs              | Data dictionary, hypotheses, cleaning summary                         |
+| Create and Populate Database | SQL scripts for creating tables and inserting initial data          |
+| SQL                        | SQL scripts used in the analysis                                      |
+| Excel                      | Excel workbook with data exploration and visualizations               |
+| Presentation               | Final summary slides (includes visualizations made in Excel)          |
+
 ---
 
 ## 📂 Data Access
